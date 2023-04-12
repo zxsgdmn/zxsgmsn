@@ -1,0 +1,98 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <stack>
+using namespace std;
+
+bool judge(unsigned year)
+{
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+int monthSum(unsigned year, unsigned int month, unsigned int day)
+{
+	unsigned int s = day; 
+	
+
+	switch (month)
+	{
+	case 12:s = s + 30;
+	case 11:s = s + 31;
+	case 10:s = s + 30;
+	case 9:s = s + 31;
+	case 8:s = s + 31;
+	case 7:s = s + 30;
+	case 6:s = s + 31;
+	case 5:s = s + 30;
+	case 4:s = s + 31;
+	case 3:
+		if (judge(year))
+		{
+			s = s + 29;
+		}
+		else
+		{
+			s = s + 28;
+		}
+	case 2:s = s + 31;
+	case 1:s = s ;
+
+	}
+
+	return s;
+
+
+}
+
+
+
+int Sum(unsigned int year, unsigned int month, unsigned int day)
+{
+	int y1sum,y2sum;
+	unsigned int Sum;
+	y1sum = (year - 1901) / 4;
+	y2sum = year - 1900 - y1sum;
+
+
+	Sum = y1sum * 366 + y2sum * 365 + monthSum(year, month, day);
+
+
+
+	return Sum;
+
+}
+
+
+
+
+int main() 
+{
+	int y, m, d;
+	int date;
+	cin >> y >> m >> d;
+	date = Sum(y, m, d) % 7;
+	
+	switch (date)
+	{
+	
+	case 0:cout << "Sunday"; break;
+	case 1:cout << "Monday"; break;
+	case 2:cout << "Tuesday"; break;
+	case 3:cout << "Wednesday"; break;
+	case 4:cout << "Thursday"; break;
+	case 5:cout << "Friday"; break;
+	case 6:cout << "Saturday"; break;
+
+	}
+
+	return 0;
+}
