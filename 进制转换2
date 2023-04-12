@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <stack>
+using namespace std;
+
+char Int2Char(int target) 
+{
+    if (target < 10) {
+        return target + '0';
+    }
+    else {
+        return target - 10 + 'A';
+    }
+}
+
+void ConvertT2N(int number, int n) 
+{
+    stack<char> s;	
+    if (number == 0) 
+    {  
+        s.push(0);
+    }
+    else 
+    {
+        while (number) 
+        {
+            s.push(Int2Char(number % n));	
+            number /= n;
+        }
+    }
+    
+    while (!s.empty()) 
+    {
+        cout<<s.top();
+        s.pop();
+    }
+    cout << endl;
+}
+
+
+
+
+int main() 
+{
+	unsigned int a, b, R;
+	int n;
+	cin >> n;
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> a >> b >> R;
+        ConvertT2N(a, R);
+        ConvertT2N(b, R);
+	}
+
+
+	return 0;
+}
