@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+
+
+using namespace std;
+
+
+int main() {
+	unsigned int num;
+	while (cin >> num)
+	{
+		cout << oct << num << endl;
+	}
+
+
+	return 0;
+}
