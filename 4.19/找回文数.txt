@@ -1,0 +1,88 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <stack>
+#include <sstream>
+
+using namespace std;
+
+bool HuiWen(string num)
+{
+	int len = num.size();
+	int mid = len / 2 - 1;
+	int top, next;
+	string s;
+	top = 0;
+	for (int i = 0; i <= mid; i++)
+	{
+		s[++top] = num[i];
+	}
+	
+	
+	if (len % 2 == 0)
+	{
+		next = mid + 1;
+	}
+	else
+	{
+		next = mid + 2;
+	}
+
+	for (int i = next; i <= len - 1; i++)
+	{
+		if (num[i] != s[top])
+		{
+			break;
+		}
+		top--;
+	
+	}
+	if (top == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+
+
+
+
+int main() 
+{
+	
+	int n, k, num1;
+	string num;
+	int flag = 0;
+
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> num >> k;
+		stringstream stream;
+		stream << num; stream >> num1;
+		stream.clear();
+		for (int j = num1; flag < k; j++)
+		{
+			string s1;
+			stringstream stream;
+			stream << j; stream >> s1;
+			stream.clear();
+			if (HuiWen(s1))
+			{
+				cout << s1 << ' ';
+				flag++;
+			}
+
+		}
+		cout << endl;
+	}
+
+
+
+	return 0;
+}

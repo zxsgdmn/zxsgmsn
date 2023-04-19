@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <stack>
+#include <sstream>
+
+using namespace std;
+
+
+double Square(unsigned int r)
+{
+	const double pi = 3.14;
+	return pi * r * r;
+}
+
+double Circumference(unsigned int r)
+{
+	const double pi = 3.14;
+	return 2 * pi * r;
+}
+
+
+
+
+int main() 
+{
+	unsigned int r;
+	cin >> r;
+	cout << "直径=" << 2 * r << endl;
+	cout << "周长=" << Circumference(r) << endl;
+	cout << "面积=" << Square(r) << endl;
+
+
+
+	return 0;
+}

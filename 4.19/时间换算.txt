@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <stack>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+
+int tensplacemod(int a)
+{
+	return(a % 100);
+}
+
+
+int main() 
+{
+	int bjt, utc = 0;
+	do {
+		cin >> bjt;
+		if ((bjt < 0 || bjt > 2359) || tensplacemod(bjt) >= 60)
+		{
+			cout << "范围错误，请重新输入一个时间：";
+		}
+	} while (bjt < 0 || bjt > 2359);
+
+	if (bjt >= 0 && bjt <= 759)
+	{
+		utc = bjt + 1600;
+	}
+	else if (bjt >= 800 && bjt <= 2359)
+	{
+		utc = bjt - 800;
+	}
+
+	cout << utc << endl;
+
+
+
+
+
+	return 0;
+}
